@@ -93,9 +93,22 @@ export async function GET() {
       `),
         ]);
 
+        const total = Number(totalDeliveries.rows[0]?.count ?? 0);
+        const topModelObj = topModels.rows[0];
+        const topLocObj = locations.rows[0];
+        const topColourObj = colours.rows[0];
+        const topSOObj = salesOfficers.rows[0];
+
+        const insights = [
+            total > 0 && topModelObj ? `**${topModelObj.model}** is the best-selling model, driving **${Math.round((Number(topModelObj.sold)) / total * 100)}%** of volume.` : null,
+            total > 0 && topLocObj ? `**${topLocObj.location}** contributed **${Math.round((Number(topLocObj.deliveries)) / total * 100)}%** of total deliveries.` : null,
+            topColourObj ? `**${topColourObj.colour}** is the most preferred vehicle colour.` : null,
+            total > 0 && topSOObj ? `**${topSOObj.sales_officer}** generated **${Math.round((Number(topSOObj.deliveries)) / total * 100)}%** of total deliveries.` : null,
+        ].filter(Boolean);
+
         return Response.json({
             kpis: {
-                totalDeliveries: totalDeliveries.rows[0]?.count ?? 0,
+                totalDeliveries: total,
             },
             monthlySales: monthlySales.rows,
             modelDistribution: modelDistribution.rows,
@@ -104,6 +117,7 @@ export async function GET() {
             salesOfficers: salesOfficers.rows,
             colours: colours.rows,
             remarks: remarks.rows,
+            insights,
         });
     } catch (err) {
         console.error("Dashboard API Error:", err);
