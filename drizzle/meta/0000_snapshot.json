@@ -1,0 +1,152 @@
+{
+  "id": "69dd39b3-fd54-49b5-a5b4-1d0c74a445c8",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.deliveries": {
+      "name": "deliveries",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "customer_name": {
+          "name": "customer_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "model": {
+          "name": "model",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "vin_no": {
+          "name": "vin_no",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "suffix": {
+          "name": "suffix",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "colour": {
+          "name": "colour",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "payment_received": {
+          "name": "payment_received",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "delivery_date": {
+          "name": "delivery_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "delivery_month": {
+          "name": "delivery_month",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "location": {
+          "name": "location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sales_officer": {
+          "name": "sales_officer",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "remark": {
+          "name": "remark",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rto": {
+          "name": "rto",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "perm_reg_rto": {
+          "name": "perm_reg_rto",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "documents_handover": {
+          "name": "documents_handover",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "temp_reg": {
+          "name": "temp_reg",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "perm_reg": {
+          "name": "perm_reg",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "refund": {
+          "name": "refund",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "pending_accessories": {
+          "name": "pending_accessories",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "toyota_connect_app": {
+          "name": "toyota_connect_app",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

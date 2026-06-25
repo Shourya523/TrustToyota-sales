@@ -1,0 +1,22 @@
+CREATE TABLE "deliveries" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"customer_name" text,
+	"model" text,
+	"vin_no" text,
+	"suffix" text,
+	"colour" text,
+	"payment_received" text,
+	"delivery_date" date,
+	"delivery_month" text,
+	"location" text,
+	"sales_officer" text,
+	"remark" text,
+	"rto" text,
+	"perm_reg_rto" integer,
+	"documents_handover" integer,
+	"temp_reg" integer,
+	"perm_reg" integer,
+	"refund" integer,
+	"pending_accessories" integer,
+	"toyota_connect_app" integer
+);
