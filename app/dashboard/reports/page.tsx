@@ -57,7 +57,7 @@ export default function ReportsPage() {
 
     return (
         <div className="p-8 pb-32 min-h-screen bg-[#09090b] text-zinc-100 flex flex-col xl:flex-row gap-8">
-            
+
             <div className="flex-1 flex flex-col gap-6">
                 <header className="mb-2">
                     <div className="flex items-center gap-3">
@@ -77,7 +77,7 @@ export default function ReportsPage() {
                         <h2 className="text-lg font-bold text-zinc-200 tracking-wide">
                             {performanceSummary.monthName} Performance Summary
                         </h2>
-                        
+
                         <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-zinc-950/50 border-zinc-800">
                             {performanceSummary.increase >= 0 ? (
                                 <TrendingUp className="w-5 h-5 text-emerald-400" />
@@ -152,15 +152,15 @@ export default function ReportsPage() {
                             <div key={model.model} className="bg-zinc-950/50 p-4 rounded-xl border border-zinc-800/50 flex items-center justify-between group">
                                 <div className="flex-1">
                                     <span className="text-sm font-semibold text-zinc-300 block mb-1">{model.model}</span>
-                                    
+
                                     {/* Mini Sparkline Chart */}
                                     <div className="h-6 w-24">
                                         <ResponsiveContainer width="100%" height="100%">
                                             <AreaChart data={model.history}>
                                                 <defs>
                                                     <linearGradient id={`color-${model.model}`} x1="0" y1="0" x2="0" y2="1">
-                                                        <stop offset="5%" stopColor="#a855f7" stopOpacity={0.5}/>
-                                                        <stop offset="95%" stopColor="#a855f7" stopOpacity={0}/>
+                                                        <stop offset="5%" stopColor="#a855f7" stopOpacity={0.5} />
+                                                        <stop offset="95%" stopColor="#a855f7" stopOpacity={0} />
                                                     </linearGradient>
                                                 </defs>
                                                 <YAxis domain={['dataMin - 5', 'dataMax + 5']} hide />
@@ -177,8 +177,6 @@ export default function ReportsPage() {
                     </div>
                 </div>
             </div>
-
-            <FabASKai />
         </div>
     );
 }

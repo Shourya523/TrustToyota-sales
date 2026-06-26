@@ -69,10 +69,10 @@ export default function TeamPage() {
                         <p className="text-sm text-zinc-400 mt-1">Directory of Sales Officers and their core metrics.</p>
                     </div>
                 </div>
-                
+
                 <div className="relative w-full md:w-64">
                     <Search className="w-4 h-4 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
-                    <input 
+                    <input
                         type="text"
                         placeholder="Search team..."
                         value={searchQuery}
@@ -88,7 +88,7 @@ export default function TeamPage() {
                         {so.rank === 1 && (
                             <div className="absolute top-0 right-0 w-32 h-32 bg-[#EB0A1E]/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none" />
                         )}
-                        
+
                         <div className="flex items-start justify-between mb-6 relative z-10">
                             <div>
                                 <h3 className="text-xl font-bold text-zinc-100">{so.name}</h3>
@@ -155,14 +155,13 @@ export default function TeamPage() {
                     </div>
                 ))}
             </div>
-            
+
             {filteredTeam.length === 0 && !loading && (
                 <div className="py-12 text-center text-zinc-500">
                     No sales officers found matching "{searchQuery}"
                 </div>
             )}
-            
-            <FabASKai />
+
         </div>
     );
 }

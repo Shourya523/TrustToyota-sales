@@ -74,7 +74,7 @@ export default function ShowroomsPage() {
                         {room.rank === 1 && (
                             <div className="absolute top-0 right-0 w-32 h-32 bg-[#EB0A1E]/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none" />
                         )}
-                        
+
                         <div className="flex items-start justify-between mb-6 relative z-10">
                             <div>
                                 <h3 className="text-xl font-bold text-zinc-100">{room.name}</h3>
@@ -138,8 +138,6 @@ export default function ShowroomsPage() {
                     </div>
                 ))}
             </div>
-            
-            <FabASKai />
         </div>
     );
 }

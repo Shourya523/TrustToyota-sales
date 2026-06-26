@@ -87,7 +87,6 @@ export default function Simulator() {
                     )}
                 </div>
             </div>
-            <FabASKai />
         </div>
     );
 }
