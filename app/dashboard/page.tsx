@@ -17,7 +17,6 @@ import {
   Legend,
 } from "recharts";
 import { Loader2, TrendingUp, MapPin, Users, CarFront, Lightbulb, Filter } from "lucide-react";
-import { FabASKai } from "../components/fabASKai";
 import { useFilters } from "../components/FilterContext";
 
 interface DashboardData {

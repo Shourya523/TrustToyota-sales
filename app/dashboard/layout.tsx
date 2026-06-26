@@ -4,6 +4,8 @@ import { LayoutDashboard, LogOut, Settings, Car, Bot, Users, Activity, MapPin, F
 import Link from "next/link";
 import { useState } from "react";
 import { FilterProvider } from "@/app/components/FilterContext";
+import { FabASKai } from "@/app/components/fabASKai";
+import { usePathname } from "next/navigation";
 
 export default function DashboardLayout({
   children,
@@ -11,6 +13,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <FilterProvider>
@@ -123,6 +126,8 @@ export default function DashboardLayout({
         <main className="flex-1 overflow-y-auto bg-[#09090b] pt-16 md:pt-0">
           {children}
         </main>
+        
+        {pathname !== "/dashboard/chat" && <FabASKai />}
       </div>
     </FilterProvider>
   );
