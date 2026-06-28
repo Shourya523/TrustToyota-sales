@@ -69,7 +69,7 @@ export function getAgentTools() {
                 }
                 try {
                     const result = await db.execute(sql.raw(query));
-                    return { chartConfig: { type, title, data: result.rows, xKey, yKey } };
+                    return { chartConfig: { type, title, data: result.rows, xKey, yKey, query } };
                 } catch (err: any) {
                     console.error("SQL Error in Chart Tool:", err);
                     return { error: err.message, detail: err.detail || err.cause?.message || "Unknown SQL error" };

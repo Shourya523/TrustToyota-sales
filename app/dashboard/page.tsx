@@ -49,8 +49,34 @@ export default function Dashboard() {
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [customWidgets, setCustomWidgets] = useState<any[]>([]);
 
   const [activeTab, setActiveTab] = useState<"budget" | "mid" | "luxury">("budget");
+
+  // Load custom pinned widgets
+  useEffect(() => {
+    fetch('/api/dashboard/widgets')
+      .then(res => res.json())
+      .then(fetched => {
+        if (fetched.widgets) {
+          setCustomWidgets(fetched.widgets);
+        }
+      })
+      .catch(err => console.error("Error loading custom widgets:", err));
+  }, []);
+
+  const deleteWidget = async (id: number) => {
+    try {
+      const res = await fetch(`/api/dashboard/widgets?id=${id}`, {
+        method: 'DELETE'
+      });
+      if (res.ok) {
+        setCustomWidgets(prev => prev.filter(w => w.id !== id));
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const { selectedLocation, setSelectedLocation, selectedModel, setSelectedModel, selectedMonth, setSelectedMonth } = useFilters();
 

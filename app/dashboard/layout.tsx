@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutDashboard, LogOut, Settings, Car, Bot, Users, Activity, MapPin, FileText, Menu, X } from "lucide-react";
+import { LayoutDashboard, LogOut, Settings, Car, Bot, Users, Activity, MapPin, FileText, Menu, X, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { FilterProvider } from "@/app/components/FilterContext";
@@ -99,6 +99,14 @@ export default function DashboardLayout({
             >
               <Bot className="w-4 h-4" />
               <span className="text-sm font-medium">Copilot</span>
+            </Link>
+            <Link
+              href="/dashboard/widgets"
+              onClick={() => setIsSidebarOpen(false)}
+              className="flex items-center gap-3 px-3 py-2 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 rounded-md transition-colors"
+            >
+              <TrendingUp className="w-4 h-4 text-[#EB0A1E]" />
+              <span className="text-sm font-medium">My Widgets</span>
             </Link>
           </nav>
 

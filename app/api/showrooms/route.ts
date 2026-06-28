@@ -63,15 +63,10 @@ export async function GET() {
             
             const topSO = Object.entries(data.sos).sort((a, b) => b[1] - a[1])[0]?.[0] || "N/A";
             
-            let growth = 0;
-            if (latestMonth && prevMonth) {
-                const latestSales = data.months[latestMonth] || 0;
-                const prevSales = data.months[prevMonth] || 0;
-                if (prevSales > 0) {
-                    growth = Math.round(((latestSales - prevSales) / prevSales) * 100);
-                } else if (latestSales > 0) {
-                    growth = 100;
-                }
+            let avgMonthly = 0;
+            const numMonths = Object.keys(data.months).length;
+            if (numMonths > 0) {
+                avgMonthly = Math.round(data.totalDeliveries / numMonths);
             }
 
             return {
@@ -79,7 +74,7 @@ export async function GET() {
                 deliveries: data.totalDeliveries,
                 topModels,
                 topSO,
-                growth
+                avgMonthly
             };
         });
 

@@ -10,7 +10,7 @@ interface TeamMember {
     rank: number;
     topModels: string[];
     topLocation: string;
-    growth: number;
+    avgMonthly: number;
 }
 
 export default function TeamPage() {
@@ -111,21 +111,10 @@ export default function TeamPage() {
                                 <p className="text-2xl font-bold text-zinc-100">{so.deliveries}</p>
                             </div>
                             <div className="bg-zinc-950/50 p-4 rounded-xl border border-zinc-800/50 flex flex-col justify-center">
-                                <p className="text-xs text-zinc-500 uppercase tracking-wider font-semibold mb-1">Growth</p>
+                                <p className="text-xs text-zinc-500 uppercase tracking-wider font-semibold mb-1">Avg / Month</p>
                                 <div className="flex items-center gap-1.5">
-                                    {so.growth > 0 ? (
-                                        <>
-                                            <ArrowUpRight className="w-4 h-4 text-emerald-400" />
-                                            <span className="text-lg font-bold text-emerald-400">+{so.growth}%</span>
-                                        </>
-                                    ) : so.growth < 0 ? (
-                                        <>
-                                            <ArrowDownRight className="w-4 h-4 text-red-400" />
-                                            <span className="text-lg font-bold text-red-400">{so.growth}%</span>
-                                        </>
-                                    ) : (
-                                        <span className="text-lg font-bold text-zinc-400">0%</span>
-                                    )}
+                                    <span className="text-lg font-bold text-zinc-200">{so.avgMonthly}</span>
+                                    <span className="text-xs font-medium text-zinc-500">vehicles</span>
                                 </div>
                             </div>
                         </div>

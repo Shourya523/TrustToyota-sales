@@ -3,16 +3,27 @@
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 
 const COLORS = [
-    "#EB0A1E",
-    "#475569",
-    "#94a3b8",
-    "#cbd5e1",
-    "#1e293b",
-    "#f8fafc",
-    "#334155",
-    "#64748b",
-    "#e2e8f0",
-    "#0f172a",
+    "#EB0A1E", // Toyota Red
+    "#1E90FF", // Dodger Blue
+    "#32CD32", // Lime Green
+    "#FFD700", // Gold
+    "#FF69B4", // Hot Pink
+    "#8A2BE2", // Blue Violet
+    "#00FFFF", // Cyan
+    "#FF4500", // Orange Red
+    "#00FA9A", // Medium Spring Green
+    "#FF00FF", // Magenta
+    "#4682B4", // Steel Blue
+    "#D2691E", // Chocolate
+    "#ADFF2F", // Green Yellow
+    "#4B0082", // Indigo
+    "#F08080", // Light Coral
+    "#20B2AA", // Light Sea Green
+    "#800000", // Maroon
+    "#000080", // Navy
+    "#808000", // Olive
+    "#FFA500", // Orange
+    "#DA70D6", // Orchid
 ];
 
 interface ChartConfig {
