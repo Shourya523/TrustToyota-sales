@@ -70,7 +70,7 @@ export default function ShowroomsPage() {
                 </div>
             </header>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {showrooms.map((room) => (
                     <div key={room.name} className="bg-zinc-900/50 rounded-2xl border border-zinc-800/60 p-6 flex flex-col relative overflow-hidden group hover:border-zinc-700 transition-colors">
                         {room.rank === 1 && (
@@ -90,35 +90,35 @@ export default function ShowroomsPage() {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4 mb-6 relative z-10">
-                            <div className="bg-zinc-950/50 p-4 rounded-xl border border-zinc-800/50 min-h-[88px] flex flex-col justify-center">
+                        <div className="grid grid-cols-1 min-[480px]:grid-cols-2 gap-4 mb-6 relative z-10">
+                            <div className="bg-zinc-950/50 p-4 rounded-xl border border-zinc-800/50 min-h-[96px] flex flex-col justify-center">
                                 <p className="text-xs text-zinc-500 uppercase tracking-wider font-semibold mb-1">Deliveries</p>
                                 <p className="text-2xl font-bold text-zinc-100">{room.deliveries}</p>
                             </div>
-                            <div className="bg-zinc-950/50 p-4 rounded-xl border border-zinc-800/50 flex flex-col justify-center min-h-[88px]">
-                                <p className="text-xs text-zinc-500 uppercase tracking-wider font-semibold mb-1">Avg / Month</p>
-                                <div className="flex items-baseline justify-between gap-1.5">
+                            <div className="bg-zinc-950/50 p-4 rounded-xl border border-zinc-800/50 flex flex-col justify-center min-h-[96px]">
+                                <p className="text-xs text-zinc-500 uppercase tracking-wider font-semibold mb-1.5">Avg / Month</p>
+                                <div className="flex flex-col gap-1.5">
                                     <div className="flex items-baseline gap-1.5">
                                         <span className="text-lg font-bold text-zinc-200">{room.avgMonthly}</span>
                                         <span className="text-xs font-medium text-zinc-500">vehicles</span>
                                     </div>
                                     {room.growthPercent !== undefined && room.growthPercent !== null && (
-                                        <div className="flex flex-col items-end justify-center">
-                                            <div className={`flex items-center gap-0.5 text-xs font-semibold px-2 py-0.5 rounded-full ${
+                                        <div className="flex items-center flex-wrap gap-1.5 mt-0.5">
+                                            <div className={`flex items-center gap-0.5 text-[11px] font-bold px-2 py-0.5 rounded-full ${
                                                 room.growthPercent >= 0 
                                                     ? 'text-emerald-400 bg-emerald-500/10' 
                                                     : 'text-rose-400 bg-rose-500/10'
                                             }`}>
                                                 {room.growthPercent >= 0 ? (
-                                                    <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
+                                                    <ArrowUpRight className="w-3 h-3 shrink-0" />
                                                 ) : (
-                                                    <ArrowDownRight className="w-3.5 h-3.5 shrink-0" />
+                                                    <ArrowDownRight className="w-3 h-3 shrink-0" />
                                                 )}
                                                 <span>
                                                     {room.growthPercent >= 0 ? '+' : ''}{room.growthPercent.toFixed(0)}%
                                                 </span>
                                             </div>
-                                            <span className="text-[10px] text-zinc-500 mt-1 font-semibold">
+                                            <span className="text-[10px] text-zinc-500 font-semibold whitespace-nowrap">
                                                 {room.comparisonMonth ? `${room.comparisonMonth} vs avg` : "vs avg"}
                                             </span>
                                         </div>

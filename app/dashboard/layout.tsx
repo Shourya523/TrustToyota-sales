@@ -55,41 +55,61 @@ export default function DashboardLayout({
             <Link
               href="/dashboard"
               onClick={() => setIsSidebarOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 rounded-md transition-colors"
+              className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors border ${
+                pathname === "/dashboard"
+                  ? "text-zinc-100 bg-[#EB0A1E]/10 border-[#EB0A1E]/20 font-semibold"
+                  : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 border-transparent"
+              }`}
             >
-              <LayoutDashboard className="w-4 h-4" />
+              <LayoutDashboard className={`w-4 h-4 ${pathname === "/dashboard" ? "text-[#EB0A1E]" : "text-zinc-500"}`} />
               <span className="text-sm font-medium">Platform</span>
             </Link>
             <Link
               href="/dashboard/team"
               onClick={() => setIsSidebarOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 rounded-md transition-colors"
+              className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors border ${
+                pathname === "/dashboard/team"
+                  ? "text-zinc-100 bg-[#EB0A1E]/10 border-[#EB0A1E]/20 font-semibold"
+                  : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 border-transparent"
+              }`}
             >
-              <Users className="w-4 h-4" />
+              <Users className={`w-4 h-4 ${pathname === "/dashboard/team" ? "text-[#EB0A1E]" : "text-zinc-500"}`} />
               <span className="text-sm font-medium">Team Performance</span>
             </Link>
             <Link
               href="/dashboard/showrooms"
               onClick={() => setIsSidebarOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 rounded-md transition-colors"
+              className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors border ${
+                pathname === "/dashboard/showrooms"
+                  ? "text-zinc-100 bg-[#EB0A1E]/10 border-[#EB0A1E]/20 font-semibold"
+                  : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 border-transparent"
+              }`}
             >
-              <MapPin className="w-4 h-4" />
+              <MapPin className={`w-4 h-4 ${pathname === "/dashboard/showrooms" ? "text-[#EB0A1E]" : "text-zinc-500"}`} />
               <span className="text-sm font-medium">Showrooms</span>
             </Link>
             <Link
               href="/dashboard/chat"
               onClick={() => setIsSidebarOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 rounded-md transition-colors"
+              className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors border ${
+                pathname === "/dashboard/chat"
+                  ? "text-zinc-100 bg-[#EB0A1E]/10 border-[#EB0A1E]/20 font-semibold"
+                  : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 border-transparent"
+              }`}
             >
-              <Bot className="w-4 h-4" />
+              <Bot className={`w-4 h-4 ${pathname === "/dashboard/chat" ? "text-[#EB0A1E]" : "text-zinc-500"}`} />
               <span className="text-sm font-medium">Copilot</span>
             </Link>
             <Link
               href="/dashboard/widgets"
               onClick={() => setIsSidebarOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 rounded-md transition-colors"
+              className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors border ${
+                pathname === "/dashboard/widgets"
+                  ? "text-zinc-100 bg-[#EB0A1E]/10 border-[#EB0A1E]/20 font-semibold"
+                  : "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 border-transparent"
+              }`}
             >
-              <TrendingUp className="w-4 h-4 text-[#EB0A1E]" />
+              <TrendingUp className={`w-4 h-4 ${pathname === "/dashboard/widgets" ? "text-[#EB0A1E]" : "text-zinc-500"}`} />
               <span className="text-sm font-medium">My Widgets</span>
             </Link>
           </nav>
