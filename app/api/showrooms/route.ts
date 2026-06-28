@@ -51,8 +51,13 @@ export async function GET() {
             .filter(Boolean)
             .sort((a, b) => new Date(`1 ${b}`).getTime() - new Date(`1 ${a}`).getTime());
         
-        const latestMonth = sortedMonths[0];
-        const prevMonth = sortedMonths[1];
+        const comparisonMonth = sortedMonths.find(m => m.toUpperCase().startsWith("MAY")) || sortedMonths[1] || sortedMonths[0];
+        
+        const getMonthLabel = (m?: string) => {
+            if (!m) return "";
+            const name = m.split('-')[0];
+            return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+        };
 
         // Format for UI
         const showroomCards = Array.from(locData.entries()).map(([location, data]) => {
@@ -64,9 +69,18 @@ export async function GET() {
             const topSO = Object.entries(data.sos).sort((a, b) => b[1] - a[1])[0]?.[0] || "N/A";
             
             let avgMonthly = 0;
+            let growthPercent: number | null = null;
             const numMonths = Object.keys(data.months).length;
             if (numMonths > 0) {
-                avgMonthly = Math.round(data.totalDeliveries / numMonths);
+                const rawAvg = data.totalDeliveries / numMonths;
+                avgMonthly = Math.round(rawAvg);
+                
+                const currentMonthDeliveries = data.months[comparisonMonth] || 0;
+                if (rawAvg > 0) {
+                    growthPercent = ((currentMonthDeliveries - rawAvg) / rawAvg) * 100;
+                } else {
+                    growthPercent = 0;
+                }
             }
 
             return {
@@ -74,7 +88,9 @@ export async function GET() {
                 deliveries: data.totalDeliveries,
                 topModels,
                 topSO,
-                avgMonthly
+                avgMonthly,
+                growthPercent,
+                comparisonMonth: getMonthLabel(comparisonMonth)
             };
         });
 

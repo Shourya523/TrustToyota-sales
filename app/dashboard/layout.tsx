@@ -77,22 +77,6 @@ export default function DashboardLayout({
               <span className="text-sm font-medium">Showrooms</span>
             </Link>
             <Link
-              href="/dashboard/reports"
-              onClick={() => setIsSidebarOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 rounded-md transition-colors"
-            >
-              <FileText className="w-4 h-4" />
-              <span className="text-sm font-medium">Executive Reports</span>
-            </Link>
-            <Link
-              href="/dashboard/simulator"
-              onClick={() => setIsSidebarOpen(false)}
-              className="flex items-center gap-3 px-3 py-2 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 rounded-md transition-colors"
-            >
-              <Activity className="w-4 h-4" />
-              <span className="text-sm font-medium">Impact Simulator</span>
-            </Link>
-            <Link
               href="/dashboard/chat"
               onClick={() => setIsSidebarOpen(false)}
               className="flex items-center gap-3 px-3 py-2 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 rounded-md transition-colors"
