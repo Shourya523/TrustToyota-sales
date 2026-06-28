@@ -307,11 +307,11 @@ export default function ChatPage() {
       // Otherwise render a sleek table
       return (
         <div className="mt-3 overflow-x-auto border border-zinc-800 rounded-lg">
-          <table className="w-full text-left text-sm text-zinc-300">
-            <thead className="text-xs uppercase bg-zinc-900 border-b border-zinc-800">
+          <table className="w-full text-left text-xs md:text-sm text-zinc-300">
+            <thead className="text-[10px] md:text-xs uppercase bg-zinc-900 border-b border-zinc-800">
               <tr>
                 {columns.map(col => (
-                  <th key={col} className="px-4 py-2 font-medium">{col}</th>
+                  <th key={col} className="px-3 py-1.5 md:px-4 md:py-2 font-medium whitespace-nowrap">{col}</th>
                 ))}
               </tr>
             </thead>
@@ -319,7 +319,7 @@ export default function ChatPage() {
               {output.map((row, idx) => (
                 <tr key={idx} className="border-b border-zinc-800/50 last:border-0 bg-zinc-950/50">
                   {columns.map(col => (
-                    <td key={col} className="px-4 py-2">{String(row[col])}</td>
+                    <td key={col} className="px-3 py-1.5 md:px-4 md:py-2 whitespace-nowrap">{String(row[col])}</td>
                   ))}
                 </tr>
               ))}
@@ -340,14 +340,15 @@ export default function ChatPage() {
   return (
     <div className="flex flex-col h-full bg-[#09090b] text-zinc-100">
       {/* Header */}
-      <div className="border-b border-zinc-800 p-6 flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-zinc-900 border border-zinc-800 rounded-lg flex items-center justify-center">
-            <Bot className="text-[#EB0A1E] w-6 h-6" />
+      <div className="border-b border-zinc-800 p-4 md:p-6 flex items-center justify-between gap-4 shrink-0">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <div className="w-9 h-9 md:w-10 md:h-10 bg-zinc-900 border border-zinc-800 rounded-lg flex items-center justify-center shrink-0">
+            <Bot className="text-[#EB0A1E] w-5 h-5 md:w-6 md:h-6" />
           </div>
-          <div>
-            <h1 className="text-xl font-semibold">Trust Toyota Copilot</h1>
-            <p className="text-sm text-zinc-400">Ask anything about deliveries, sales, and performance.</p>
+          <div className="min-w-0">
+            <h1 className="text-base md:text-xl font-semibold truncate">Trust Toyota Copilot</h1>
+            <p className="text-xs md:text-sm text-zinc-400 truncate hidden sm:block">Ask anything about deliveries, sales, and performance.</p>
+            <p className="text-[10px] text-zinc-500 truncate sm:hidden">dealership analytics assistant</p>
           </div>
         </div>
 
@@ -364,29 +365,29 @@ export default function ChatPage() {
       </div>
 
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-6">
+      <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 md:space-y-6">
         {messages.length === 0 && (
-          <div className="flex flex-col items-center justify-center h-full text-zinc-500 space-y-4">
+          <div className="flex flex-col items-center justify-center h-full text-zinc-500 space-y-4 p-4 text-center">
             <Bot className="w-12 h-12 text-zinc-700" />
-            <p>How can I help you with dealership analytics today?</p>
+            <p className="text-sm">How can I help you with dealership analytics today?</p>
           </div>
         )}
 
         {messages.map((m) => (
-          <div key={m.id} className={`flex gap-4 ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+          <div key={m.id} className={`flex gap-2 md:gap-4 ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             {m.role === 'assistant' && (
-              <div className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center flex-shrink-0">
-                <Bot className="w-4 h-4 text-[#EB0A1E]" />
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center flex-shrink-0">
+                <Bot className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#EB0A1E]" />
               </div>
             )}
 
-            <div className={`px-4 py-3 max-w-[80%] rounded-2xl ${m.role === 'user'
+            <div className={`px-3 py-2 md:px-4 md:py-3 max-w-[92%] sm:max-w-[85%] md:max-w-[80%] rounded-2xl ${m.role === 'user'
               ? 'bg-[#EB0A1E] text-white rounded-br-none'
               : 'bg-zinc-900 border border-zinc-800 text-zinc-200 rounded-bl-none'
               }`}>
 
               {m.role === 'user' ? (
-                <p className="whitespace-pre-wrap text-sm leading-relaxed">{getMessageText(m)}</p>
+                <p className="whitespace-pre-wrap text-xs md:text-sm leading-relaxed">{getMessageText(m)}</p>
               ) : (() => {
                 const parsed = parseMessageContent(getMessageText(m));
 
@@ -400,7 +401,7 @@ export default function ChatPage() {
                         </div>
                         <div className="grid grid-cols-1 gap-1.5">
                           {parsed.steps.map((step, idx) => (
-                            <div key={idx} className="flex items-center gap-2 text-xs">
+                            <div key={idx} className="flex items-center gap-1.5 text-[10px] md:text-xs">
                               {step.error ? (
                                 <XCircle className="w-3.5 h-3.5 text-red-500 shrink-0" />
                               ) : step.active ? (
@@ -431,14 +432,14 @@ export default function ChatPage() {
 
                     {/* Dashboard Suggestion card */}
                     {parsed.suggestion && (
-                      <div className="mt-2 p-3 bg-zinc-950/80 border border-zinc-800/80 rounded-xl flex items-center justify-between gap-4">
-                        <div className="flex items-center gap-2.5">
-                          <div className="p-1.5 bg-[#EB0A1E]/10 rounded-lg text-[#EB0A1E]">
+                      <div className="mt-2 p-3 bg-zinc-950/80 border border-zinc-800/80 rounded-xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <div className="flex items-start sm:items-center gap-2.5">
+                          <div className="p-1.5 bg-[#EB0A1E]/10 rounded-lg text-[#EB0A1E] shrink-0 mt-0.5 sm:mt-0">
                             <TrendingUp className="w-4 h-4" />
                           </div>
-                          <div>
+                          <div className="min-w-0">
                             <h4 className="text-xs font-semibold text-white">Suggested Chart</h4>
-                            <p className="text-[10px] text-zinc-400 mt-0.5">{parsed.suggestion.text}</p>
+                            <p className="text-[10px] text-zinc-400 mt-0.5 break-words">{parsed.suggestion.text}</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-2 shrink-0">
@@ -465,7 +466,7 @@ export default function ChatPage() {
                               if (toolName === 'getChartTool') {
                                 const config = output?.chartConfig || output;
                                 return (
-                                  <div key={i} className="mt-3 w-full min-w-[500px] bg-zinc-950 p-4 border border-zinc-800 rounded-xl relative group">
+                                  <div key={i} className="mt-3 w-full min-w-0 md:min-w-[500px] bg-zinc-950 p-2 md:p-4 border border-zinc-800 rounded-xl relative group overflow-hidden">
                                     {config?.query && (
                                       <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                                         <button
@@ -581,30 +582,30 @@ export default function ChatPage() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about deliveries, locations, sales officers..."
-              className="w-full bg-zinc-900 border border-zinc-800 text-zinc-100 rounded-full pl-5 pr-24 py-3 focus:outline-none focus:ring-1 focus:ring-[#EB0A1E]"
+              className="w-full bg-zinc-900 border border-zinc-800 text-zinc-100 rounded-full pl-4 pr-20 py-2.5 md:pl-5 md:pr-24 md:py-3 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-[#EB0A1E]"
               disabled={isLoading}
             />
 
-            <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+            <div className="absolute right-1.5 md:right-2 top-1/2 -translate-y-1/2 flex items-center gap-0.5 md:gap-1">
               <button
                 type="button"
                 onClick={toggleListening}
                 disabled={isLoading}
-                className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isListening
+                className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-colors ${isListening
                     ? 'bg-red-500/20 text-red-500 animate-pulse'
                     : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'
                   }`}
                 title={isListening ? "Stop listening" : "Start voice input"}
               >
-                {isListening ? <Mic className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+                {isListening ? <Mic className="w-3.5 h-3.5 md:w-4 md:h-4" /> : <Mic className="w-3.5 h-3.5 md:w-4 md:h-4" />}
               </button>
 
               <button
                 type="submit"
                 disabled={isLoading || !input.trim()}
-                className="w-8 h-8 bg-[#EB0A1E] text-white rounded-full flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-red-700 transition-colors"
+                className="w-7 h-7 md:w-8 md:h-8 bg-[#EB0A1E] text-white rounded-full flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-red-700 transition-colors"
               >
-                <Send className="w-4 h-4" />
+                <Send className="w-3.5 h-3.5 md:w-4 md:h-4" />
               </button>
             </div>
           </div>

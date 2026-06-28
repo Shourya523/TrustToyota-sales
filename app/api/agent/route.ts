@@ -89,7 +89,25 @@ export async function POST(req: Request) {
                     const plan = await createExecutionPlan(lastUserMessage, schema, semantics, examples);
 
                     writeText("Executing SQL with self-repair...\n\n");
-                    const { data, finalSql } = await executeWithRepair(lastUserMessage, plan, schema);
+                    const { data: rawData, finalSql } = await executeWithRepair(lastUserMessage, plan, schema);
+
+                    // Clean numbers for recharts (cast string numbers from driver to actual numbers)
+                    const data = Array.isArray(rawData) ? rawData.map((row: any) => {
+                        const cleaned: any = {};
+                        for (const key of Object.keys(row)) {
+                            const val = row[key];
+                            if (typeof val === 'string' && /^\d+$/.test(val)) {
+                                cleaned[key] = parseInt(val, 10);
+                            } else if (typeof val === 'string' && /^\-?\d+$/.test(val)) {
+                                cleaned[key] = parseInt(val, 10);
+                            } else if (typeof val === 'string' && /^\-?\d+\.\d+$/.test(val)) {
+                                cleaned[key] = parseFloat(val);
+                            } else {
+                                cleaned[key] = val;
+                            }
+                        }
+                        return cleaned;
+                    }) : rawData;
 
                     // 1. Stream the SQL execution as a tool chunk to the UI (to render table!)
                     const sqlCallId = `sql-${Date.now()}`;
