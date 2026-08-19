@@ -9,7 +9,7 @@ export async function createExecutionPlan(
 ): Promise<string> {
     try {
         const { text: plan } = await generateText({
-            model: groq('llama-3.3-70b-versatile'),
+            model: groq('openai/gpt-oss-120b'),
             system: `You are the Planning Agent. Your job is to take a user's question, the database schema graph, business semantics, and past examples, and formulate a step-by-step reasoning plan to answer the question. Do NOT generate the actual SQL, just outline the logic required.
             
 Schema Graph Context:
