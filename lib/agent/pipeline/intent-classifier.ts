@@ -27,7 +27,7 @@ export async function classifyIntent(query: string): Promise<Intent> {
 
     try {
         const { text } = await generateText({
-            model: groq('llama-3.3-70b-versatile'),
+            model: groq('openai/gpt-oss-120b'),
             system: `You are a strict intent classifier for a dealership analytics dashboard.
 Categorize the user's input into one of three categories:
 - SQL_QUERY: ANY question about data, sales, deliveries, vehicles, showrooms, officers, performance, models, metrics, analysis, rankings, or comparisons.
