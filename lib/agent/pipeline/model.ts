@@ -16,7 +16,7 @@ export async function generateText(options: any) {
             // Force fallback to llama-3.1-8b-instant
             return await baseGenerateText({
                 ...options,
-                model: groq('llama-3.1-8b-instant')
+                model: groq('openai/gpt-oss-120b')
             });
         }
         
