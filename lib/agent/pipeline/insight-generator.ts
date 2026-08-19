@@ -13,7 +13,7 @@ export async function generateInsight(
     }
     
     const { text } = await generateText({
-        model: groq('llama-3.3-70b-versatile'),
+        model: groq('openai/gpt-oss-120b'),
         system: `You are an expert Data Analyst Copilot. Your job is to take raw database query results and the user's original question, and provide a clear, concise, and insightful conversational response.
         Do not output raw JSON. State the answer clearly. If the result is a single number, present it nicely. If it's a list, summarize or list it nicely.
         Do not reveal the raw SQL to the user unless they asked for it.`,
